@@ -35,5 +35,13 @@ namespace RestaurantRaterAPI.Controllers
         public void Delete(int id)
         {
         }
+
+        // GET -- random integer -- api/values/
+        [Route("api/Values/GetRandomInt")]
+        public int GetRandomInt()
+        {
+            Random rand = new Random();
+            return rand.Next();
+        }
     }
 }

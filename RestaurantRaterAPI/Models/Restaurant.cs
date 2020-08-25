@@ -13,7 +13,7 @@ namespace RestaurantRaterAPI.Models
         public int Id { get; set; }
         [Required] // a restuarant name will always be required to add to the database
         public string Name { get; set; }
-        // a rating will always be required to add to the database
+        [Required] // a rating will always be required to add to the database
         public double Rating { get; set; }
         public bool IsRecommended => Rating > 3.5;
         //{
