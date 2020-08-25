@@ -57,7 +57,53 @@ namespace RestaurantRaterAPI.Controllers
             return NotFound();
         }
         // PUT
+        [HttpPut]
+                                                             // from Uri       // from body of request in Postman
+        public async Task<IHttpActionResult> UpdateRestaurant([FromUri]int id, [FromBody]Restaurant updatedRestaurant)
+        {
+            // check if restaurant is valid
+            if (ModelState.IsValid)
+            {
+                // Find & update the specific restaurant
+                Restaurant restaurant = await _context.Restaurants.FindAsync(id);
 
+                if (restaurant != null)
+                {
+                    // update restaurant
+                    restaurant.Name = updatedRestaurant.Name;
+                    restaurant.Rating = updatedRestaurant.Rating;
+
+                    // save changes to db
+                    await _context.SaveChangesAsync();
+
+                    return Ok("restaurant has been updated");
+                }
+                // didn't find the restaurant
+                return NotFound();
+            }
+            // return bad request
+            return BadRequest(ModelState);
+
+        }
         // DELETE
+        [HttpDelete]
+        public async Task<IHttpActionResult> DeleteRestaurantById(int id)
+        {
+            Restaurant restaurantEntity = await _context.Restaurants.FindAsync(id);
+
+            if (restaurantEntity == null)
+            {
+                return NotFound();
+            }
+
+            _context.Restaurants.Remove(restaurantEntity);
+
+            if (await _context.SaveChangesAsync() == 1) // checks to see if SaveChanges returns 1 item. Basically checks to see if you deleted it or not        
+            {
+                return Ok("restaurant deleted");
+            }
+
+            return InternalServerError();   // 500 error
+        }
     }
 }
