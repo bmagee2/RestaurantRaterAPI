@@ -172,7 +172,16 @@
     <Compile Include="Migrations\202008251538371_InitialMigration.designer.cs">
       <DependentUpon>202008251538371_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008261344526_AddedRatingTable.cs" />
+    <Compile Include="Migrations\202008261344526_AddedRatingTable.designer.cs">
+      <DependentUpon>202008261344526_AddedRatingTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008261535103_SetupForeignKeys.cs" />
+    <Compile Include="Migrations\202008261535103_SetupForeignKeys.designer.cs">
+      <DependentUpon>202008261535103_SetupForeignKeys.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\RestaurantDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -263,6 +272,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202008251538371_InitialMigration.resx">
       <DependentUpon>202008251538371_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008261344526_AddedRatingTable.resx">
+      <DependentUpon>202008261344526_AddedRatingTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008261535103_SetupForeignKeys.resx">
+      <DependentUpon>202008261535103_SetupForeignKeys.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

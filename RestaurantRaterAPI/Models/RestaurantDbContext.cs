@@ -12,7 +12,8 @@ namespace RestaurantRaterAPI.Models
         public RestaurantDbContext() : base("DefaultConnection") { }  // BASE CONSTRUCTOR
 
                 // whole set of Restaurants -- table in the db
-        public DbSet<Restaurant> Restaurants { get; set; }
+        public DbSet<Restaurant> Restaurants { get; set; } // Restaurant class
+        public DbSet<Rating> Ratings { get; set; } // Rating class
 
     }
 }

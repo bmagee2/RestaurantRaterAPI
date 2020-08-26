@@ -48,7 +48,8 @@ namespace RestaurantRaterAPI.Controllers
         [HttpGet]
         public async Task<IHttpActionResult> GetById(int id)
         {
-            Restaurant restaurant = await _context.Restaurants.FindAsync(id);
+            List <Restaurant> restaurants = await _context.Restaurants.ToListAsync();
+            Restaurant restaurant = restaurants.FirstOrDefault(r => r.Id == id);
 
             if (restaurant != null)
             {
@@ -71,7 +72,7 @@ namespace RestaurantRaterAPI.Controllers
                 {
                     // update restaurant
                     restaurant.Name = updatedRestaurant.Name;
-                    restaurant.Rating = updatedRestaurant.Rating;
+                    //restaurant.Rating = updatedRestaurant.Rating;  -- DELETED bc we changed to no set 
 
                     // save changes to db
                     await _context.SaveChangesAsync();
