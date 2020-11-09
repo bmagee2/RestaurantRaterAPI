@@ -48,8 +48,7 @@ namespace RestaurantRaterAPI.Controllers
         [HttpGet]
         public async Task<IHttpActionResult> GetById(int id)
         {
-            List <Restaurant> restaurants = await _context.Restaurants.ToListAsync();
-            Restaurant restaurant = restaurants.FirstOrDefault(r => r.Id == id);
+            Restaurant restaurant = await _context.Restaurants.FindAsync(id);
 
             if (restaurant != null)
             {
@@ -57,6 +56,7 @@ namespace RestaurantRaterAPI.Controllers
             }
             return NotFound();
         }
+
         // PUT
         [HttpPut]
                                                              // from Uri       // from body of request in Postman
